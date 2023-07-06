@@ -9,16 +9,11 @@ Este projeto é composto por duas partes: o back-end, que é construído com Lar
 
 ## Configurando o Back-end
 
-1. Acesse seu servidor de gerenciamento de banco de dados (MySQL).
-2. Importe o arquivo `ezoom_packs.sql` para o banco de dados.
-3. Copie o arquivo `.env.example`: Copie o arquivo `.env.example` para `.env`. Você pode fazer isso com o comando `cp .env.example .env`.
-4. Configure o arquivo `.env`: Edite o arquivo `.env` para incluir suas configurações de banco de dados. Você precisará fornecer o nome do banco de dados, o usuário, a senha e o host.
-
-Agora, vamos configurar o projeto usando o Composer:
-
-5. Instale as dependências do Composer: Navegue até o diretório do projeto e execute `composer install`. Isso instalará todas as dependências PHP que o projeto precisa.
-6. Execute as migrações do banco de dados: Execute `php artisan migrate` para criar as tabelas necessárias no seu banco de dados.
-7. Inicie o servidor de desenvolvimento: Finalmente, você pode iniciar o servidor de desenvolvimento executando `php artisan serve`. Você deve ser capaz de acessar o aplicativo em http://localhost:8000.
+1. Instale as dependências do Composer: Navegue até o diretório do projeto e execute `composer install`. Isso instalará todas as dependências PHP que o projeto precisa.
+2. Copie o arquivo `.env.example`: Copie o arquivo `.env.example` para `.env`. Você pode fazer isso com o comando `cp .env.example .env`.
+3. Configure o arquivo `.env`: Edite o arquivo `.env` para incluir suas configurações de banco de dados. Você precisará fornecer o nome do banco de dados, o usuário, a senha e o host.
+4. Execute as migrações do banco de dados: Execute `php artisan migrate` para criar as tabelas necessárias no seu banco de dados.
+5. Inicie o servidor de desenvolvimento: Finalmente, você pode iniciar o servidor de desenvolvimento executando `php artisan serve`. Você deve ser capaz de acessar o aplicativo em http://localhost:8000.
 
 ## Configurando o Front-end
 
