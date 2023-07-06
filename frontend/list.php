@@ -45,6 +45,7 @@ include_once 'components/header.php';
 
 <script>
     async function getAllDados() {
+        document.getElementById('cards_items').innerHTML = ``
         await api.get('packs').then(doc => {
             let data = doc.data
             data.forEach(doc => {
@@ -61,7 +62,8 @@ include_once 'components/header.php';
                                 <li class="list-group-item">Uma pequena descrição do packje atual</li>
                             </ul>
                             <div class="card-body">
-                                <a href="#" class="card-link btn btn-warning">Editar Pack</a>
+                                <a href="edit.php?id=${doc.id}" class="card-link btn btn-warning">Editar Pack</a>
+                                <a href="#" onclick="deletePack(${doc.id})" class="card-link btn btn-danger">Deletar</a>
                             </div>
                         </div>
                     </div>
@@ -88,6 +90,36 @@ include_once 'components/header.php';
                     `
             })
 
+        })
+    }
+
+
+    async function deletePack(id_pack) {
+        await api.get('packs/' + id_pack).then(doc => {
+            let data = doc.data
+            loading(true)
+            data.images.forEach(doc => {
+                
+                axios.post('deletarImage.php', {
+                        imageSrc: doc.url_img
+                    })
+                    .then(function(response) {
+                        api.delete('images/' + doc.id).then(doc => {
+                            //sucesso
+                            viewFotos(id_URL)
+                        })
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+            })
+            loading()
+
+
+
+        })
+        await api.delete('packs/' + id_pack).then(doc => {
+            getAllDados()
         })
     }
 </script>

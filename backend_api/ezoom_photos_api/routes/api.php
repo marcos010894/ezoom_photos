@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\PackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,10 @@ Route::namespace('Api')->prefix('packs')->group(function () {
     Route::get('/', [PackController::class, 'index']);
     Route::get('/{id}', [PackController::class, 'show']);
     Route::post('/', [PackController::class, 'save']);
+    Route::delete('/{id}', [PackController::class, 'delete']);
+    Route::put('/{id}', [PackController::class, 'put']);
+});
+
+Route::namespace('Api')->prefix('images')->group(function () {
+    Route::delete('/{id}', [ImageController::class, 'delete']);
 });

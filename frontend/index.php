@@ -34,9 +34,8 @@ include_once 'components/header.php';
 
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-success">Baixar pack</button>
+            <div class="modal-footer" id="button_download">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
@@ -49,6 +48,7 @@ include_once 'components/header.php';
 <script>
     async function getAllDados() {
         await api.get('packs').then(doc => {
+            loading(true)
             let data = doc.data
             data.forEach(doc => {
                 document.getElementById('cards_items').innerHTML += `
@@ -58,11 +58,8 @@ include_once 'components/header.php';
                                 alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${doc.title}</h5>
-                                <p class="card-text">${doc.description}</p>
+                                <p>${doc.description}</p>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Uma pequena descrição do packje atual</li>
-                            </ul>
                             <div class="card-body">
                                 <a href="download.php?id=${doc.id}&name=${doc.title}"  class="card-link">Download Pack</a>
                                 <a href="#"  onclick='viewFotos(${doc.id})' class="card-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver
@@ -74,12 +71,16 @@ include_once 'components/header.php';
             })
 
         })
+        loading()
     }
 
     getAllDados()
 
     const viewFotos = async (id) => {
+
+
         await api.get('packs/' + id).then(doc => {
+            loading(true)
             let data = doc.data
             document.getElementById('gallery_items').innerHTML = ''
             data.images.forEach(doc => {
@@ -94,6 +95,8 @@ include_once 'components/header.php';
             })
 
         })
+        loading()
+
     }
 </script>
 </body>

@@ -5,143 +5,41 @@ include_once 'components/header.php';
 
 <div class="container">
     <h1>Editar Pack de fotos</h1>
-    <form action="">
+    <form action="uploadImages.php?type=PUT&id_edit=25" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Titulo do pack</label>
-            <input type="text" name="title" class="form-control" id="title" placeholder="Mil e uma ideias">
+            <input required type="text" name="titulo" class="form-control" id="titulo" placeholder="Mil e uma ideias">
         </div>
         <div class="mb-3">
             <label for="desc" class="form-label">Descrição do pack</label>
-            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+            <textarea required class="form-control" id="descricao" name="descricao" rows="3"></textarea>
         </div>
+
         <div class="mb-3">
-            ** ATENÇÂO, A PRIMEIRA FOTO DA LISTA SERÁ A FOTO DE CAPA O PACK **
+            A imagens disponiveis estão aqui:
         </div>
+        <div class="img_edits" id="img_exist">
+
+
+        </div>
+
+
         <div class="container">
             <div id="drop_zone" class="border p-3 text-center">
-                Arraste e solte suas imagens ou clique aqui
-                <input type="file" id="file_input" multiple style="display: none;">
+                ADICIONAR NOVAS IMAGENS ? <br>
+                <input type="file" name="imagens[]" id="file_input" multiple>
 
             </div>
             <div id="uploaded_images" class="mt-3">
-                <!-- As imagens soltas aparecerão aqui -->
+
             </div>
         </div>
-        <button type="button" class="btn btn-outline-success"> Editar Pack de fotos </button>
+        <button type="submits" style="margin-bottom: 49px;" class="btn btn-outline-success">Editar Pack de fotos</button>
     </form>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const dropZone = document.getElementById('drop_zone');
-        const uploadedImages = document.getElementById('uploaded_images');
-        const fileInput = document.getElementById('file_input');
-
-        function handleFiles(files) {
-            Array.from(files).forEach((file) => {
-                if (!file.type.startsWith('image/')) {
-                    return;
-                }
-
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    // Cria a imagem
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.classList.add('thumbnail-image', 'mr-2', 'mt-2');
-
-                    // Cria o botão de remover
-                    const removeButton = document.createElement('button');
-                    removeButton.textContent = 'Remover';
-                    removeButton.classList.add('btn', 'btn-outline-danger', 'btn-sm', 'mt-2');
-
-                    // Cria um div para conter a imagem e o botão
-                    const div = document.createElement('div');
-                    div.classList.add('thumbnail-container', 'd-inline-block', 'mr-2');
-
-                    // Adiciona a imagem e o botão ao div
-                    div.appendChild(img);
-                    div.appendChild(removeButton);
-
-                    // Adiciona o div à zona de imagens carregadas
-                    uploadedImages.appendChild(div);
-
-                    // Adiciona um evento de clique ao botão de remover
-                    removeButton.addEventListener('click', function(e) {
-                        uploadedImages.removeChild(div);
-                    });
-                };
-
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function createImageElement(src) {
-            // Cria a imagem
-            const img = document.createElement('img');
-            img.src = src;
-            img.classList.add('thumbnail-image', 'mr-2', 'mt-2');
-
-            // Cria o botão de remover
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.classList.add('btn', 'btn-outline-danger', 'btn-sm', 'mt-2');
-
-            // Cria um div para conter a imagem e o botão
-            const div = document.createElement('div');
-            div.classList.add('thumbnail-container', 'd-inline-block', 'mr-2');
-
-            // Adiciona a imagem e o botão ao div
-            div.appendChild(img);
-            div.appendChild(removeButton);
-
-            // Adiciona o div à zona de imagens carregadas
-            uploadedImages.appendChild(div);
-
-            // Adiciona um evento de clique ao botão de remover
-            removeButton.addEventListener('click', function(e) {
-                uploadedImages.removeChild(div);
-            });
-        }
-
-        dropZone.addEventListener('click', (e) => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
-        });
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('bg-light');
-        });
-
-        dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('bg-light');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('bg-light');
-            handleFiles(e.dataTransfer.files);
-        });
-
-        /* fetch('http://minha-api.com/imagens')
-             .then(response => response.json())
-             .then(data => {
-                 // Supondo que `data` seja uma lista de URLs de imagem
-                 data.forEach(url => createImageElement(url));
-             });
-             */
-        data = [
-            'ezoom.svg'
-        ]
-        data.forEach(url => createImageElement(url));
-    });
-</script>
+<script src="assets/js/axiosbase.js"></script>
+<script src="assets/js/edit.js"></script>
 </body>
 
 </html>

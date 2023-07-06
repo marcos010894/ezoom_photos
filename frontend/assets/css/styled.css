@@ -17,6 +17,7 @@
 
 .btn-outline-success:hover {
     background-color: #119c13;
+    margin-bottom: 50px;
 }
 
 
@@ -127,4 +128,44 @@
     body {
         padding: 0;
     }
+}
+
+.card-img-top {
+    height: 230px !important;
+}
+
+.card {
+    min-height: 450px;
+    border-radius: 18px;
+}
+
+
+.img_edits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img_edits div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.img_edits div img {
+    width: 160px;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2000;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.35); */
+    top: 0;
 }

@@ -46,27 +46,79 @@ class PackController extends Controller
     public function save(Request $request)
     {
         try {
-            // Iniciar a transação
             DB::beginTransaction();
 
-            // Obter os dados do JSON
             $data = $request->json()->all();
             $title = $data['title'];
             $description = $data['description'];
             $images = $data['images'];
 
-            // Criar um novo registro na tabela Pack
+
             $pack = $this->pack->create([
                 'title' => $title,
                 'description' => $description,
             ]);
 
-            // Inserir as URLs das imagens na tabela Images
+
             foreach ($images as $url) {
                 $this->image->create([
                     'url_img' => $url,
                     'id_pack' => $pack->id,
                 ]);
+            }
+
+            DB::commit();
+
+            return response()->json($pack);
+        } catch (\Exception $e) {
+            // Rollback da transação em caso de erro
+            DB::rollback();
+
+            return response()->json(['error' => 'Ocorreu um erro ao criar o pacote.'], 500);
+        }
+    }
+
+    public function delete($id)
+    {
+        $pack = $this->pack->find($id);
+
+        if (!$pack) {
+            return response()->json(['error' => 'pack não encontrada'], 404);
+        }
+        $pack->delete();
+
+        return response()->json(['success' => 'Pack excluído com sucesso']);
+    }
+
+    public function put(Request $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+
+            $data = $request->json()->all();
+            $title = $data['title'];
+            $description = $data['description'];
+            $images = $data['images'];
+
+            $pack = $this->pack->find($id);
+
+            if (!$pack) {
+                return response()->json(['error' => 'Pack não encontrado'], 404);
+            }
+
+            $pack->title = $title;
+            $pack->description = $description;
+            $pack->save();
+
+            if ($images) {
+
+
+                foreach ($images as $url) {
+                    $this->image->create([
+                        'url_img' => $url,
+                        'id_pack' => $id,
+                    ]);
+                }
             }
 
             // Commit da transação
@@ -77,7 +129,7 @@ class PackController extends Controller
             // Rollback da transação em caso de erro
             DB::rollback();
 
-            return response()->json(['error' => 'Ocorreu um erro ao criar o pacote.'], 500);
+            return response()->json(['error' => 'Ocorreu um erro ao atualizar o pacote.'], 500);
         }
     }
 }

@@ -9,23 +9,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link active" aria-current="page" href="list.php">Editar Packs</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Nome do usuario
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sair</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="register.php">Nova Imagem</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <a href="registrar_foto.html" class="btn btn-outline-success" type="submit">+ Nova publicação</a>
-                </form>
             </div>
         </div>
     </nav>
+
+    <div class="loading" id="loading" style="display: none;">
+        <img style="width: 90px;" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="">
+    </div>
