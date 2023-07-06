@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ['status' => 'Ok'];
 });
 
 
-Route::get('/packs', function () {
-    return ['nsg' => 'rota de fato'];
-});
+// Route::get('/packs', function (Request $request) {
+//     // dd($request->headers->all());
+//     $response = new \Illuminate\Http\Response(json_encode(['msg' => 'rota de foto']));
+//     $response->headers->set('Content-Type', 'application/json');
+//     $response->headers->set('Accept', 'application/json');
+//     $response->headers->set('Authorization', 'Bearer your_token');
+
+//     return $response;
+// });
+
+
+// Route::get('/packsAll', function () {
+//     // dd($request->headers->all());
+//     return App\Models\Pack::all();
+// });

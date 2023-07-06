@@ -34,7 +34,7 @@
     height: auto;
 }
 
-img {
+.thumbnail-container img {
     width: 140px;
     margin: 15px;
 }
