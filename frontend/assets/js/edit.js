@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const reader = new FileReader();
 
       reader.onload = function (e) {
-        // Cria a imagem
+      
         const img = document.createElement("img");
         img.src = e.target.result;
         img.classList.add("thumbnail-image", "mr-2", "mt-2");
 
-        // Cria o botão de remover
+       
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remover";
         removeButton.classList.add(
@@ -28,18 +28,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
           "mt-2"
         );
 
-        // Cria um div para conter a imagem e o botão
+      
         const div = document.createElement("div");
         div.classList.add("thumbnail-container", "d-inline-block", "mr-2");
 
-        // Adiciona a imagem e o botão ao div
+       
         div.appendChild(img);
         div.appendChild(removeButton);
 
-        // Adiciona o div à zona de imagens carregadas
+        
         uploadedImages.appendChild(div);
 
-        // Adiciona um evento de clique ao botão de remover
+        
         removeButton.addEventListener("click", function (e) {
           uploadedImages.removeChild(div);
         });
@@ -50,28 +50,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function createImageElement(src) {
-    // Cria a imagem
+    
     const img = document.createElement("img");
     img.src = src;
     img.classList.add("thumbnail-image", "mr-2", "mt-2");
 
-    // Cria o botão de remover
+    
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remover";
     removeButton.classList.add("btn", "btn-outline-danger", "btn-sm", "mt-2");
 
-    // Cria um div para conter a imagem e o botão
+   
     const div = document.createElement("div");
     div.classList.add("thumbnail-container", "d-inline-block", "mr-2");
 
-    // Adiciona a imagem e o botão ao div
+   
     div.appendChild(img);
     div.appendChild(removeButton);
 
-    // Adiciona o div à zona de imagens carregadas
+    
     uploadedImages.appendChild(div);
 
-    // Adiciona um evento de clique ao botão de remover
+
     removeButton.addEventListener("click", function (e) {
       uploadedImages.removeChild(div);
     });
@@ -126,7 +126,7 @@ async function remove_img(id, url) {
     })
     .then(function (response) {
       api.delete("images/" + id).then((doc) => {
-        //sucesso
+        
         viewFotos(id_URL);
       });
     })
@@ -153,7 +153,7 @@ $(document).ready(function () {
         $("#uploaded_images").empty();
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        // Aqui você pode adicionar seu código de tratamento de erros
+        
         alert(
           "Ocorreu um erro ao enviar o formulário: " +
             textStatus +

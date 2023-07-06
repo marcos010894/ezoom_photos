@@ -1,11 +1,5 @@
 var baseURL = "http://localhost:8000/api/";
-// if (urlIsTrue) {
-//   alert("Local: http://127.0.0.1:8000/");
-//   baseURL = "http://127.0.0.1:8000/";
-// } else {
-//   alert("Online: http://129.148.44.82:8000/");
-//   baseURL = "http://129.148.44.82:8000/";
-// }
+
 const api = axios.create({ baseURL });
 const tipos = ["nematologia/microbiologia", "Renasem", "Patologia de Sementes"];
 const headersConf = {
@@ -24,16 +18,4 @@ const headersConf = {
     " Cache-Control": "no-cache",
     Authorization: `Bearer ${localStorage.getItem("refresh_token")}`,
   },
-};
-
-// api.get('/ditto').then((data) => {
-//     console.log(data.data)
-// })
-
-const loading = (parm) => {
-  if (parm) {
-    document.getElementById("loading").style.display = "flex";
-  } else {
-    document.getElementById("loading").style.display = "none";
-  }
 };
