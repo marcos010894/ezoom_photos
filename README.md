@@ -5,6 +5,7 @@ Este projeto é composto por duas partes: o back-end, que é construído com Lar
 ## Pré-requisitos
 
 - Certifique-se de ter um servidor com PHP ^8.
+- Certifique-se de ter ZipArchive Habilitado no seu servidor.
 - O back-end roda com Laravel, então, certifique-se de ter o Laravel e o Composer instalados.
 
 ## Configurando o Back-end
@@ -20,6 +21,6 @@ Este projeto é composto por duas partes: o back-end, que é construído com Lar
 1. Altere a rota no arquivo `axiosbase.js` de acordo com o seu ambiente local, por exemplo, `http://localhost:8000`.
 2. Dentro do script `uploadImages`, configure a variável `$url` de acordo, mantendo a mesma endpoint.
 
-Em seguida, basta rodar o seu projeto do front-end em qualquer local que roda o PHP 8^ como o XAMPP, LAMPP entre outros. 
+Em seguida, basta rodar o seu projeto do front-end em qualquer local que roda o PHP 8^ como o XAMPP, LAMPP entre outros.
 
 Se você tiver o PHP devidamente instalado, você pode usar o comando `php -S localhost:8090` para iniciar o servidor.

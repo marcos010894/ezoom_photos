@@ -19,3 +19,10 @@ const headersConf = {
     Authorization: `Bearer ${localStorage.getItem("refresh_token")}`,
   },
 };
+function loading(parm) {
+  if (parm) {
+    document.getElementById("loading").style.display = "flex";
+  } else {
+    document.getElementById("loading").style.display = "none";
+  }
+}
