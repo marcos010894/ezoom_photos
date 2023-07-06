@@ -15,7 +15,7 @@
                         <a class="nav-link active" aria-current="page" href="list.php">Editar Packs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="register.php">Nova Imagem</a>
+                        <a class="nav-link active" aria-current="page" href="register.php">Novo Pack</a>
                     </li>
                 </ul>
             </div>
